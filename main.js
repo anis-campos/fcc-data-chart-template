@@ -67,6 +67,7 @@ const argv = yargs
 
     const [jsMin, js] = await exists(`${src}script.js`).then((b) => b ? Promise.all([
         transform(`${src}script.js`, {
+                "plugins": ["remove-import-export"],
                 "presets": [
                     "@babel/preset-env", "minify"
                 ],
@@ -74,6 +75,7 @@ const argv = yargs
             }
         ).then(r => r.code),
         transform(`${src}script.js`, {
+                "plugins": ["remove-import-export"],
                 "presets": [
                     "@babel/preset-env"
                 ],
